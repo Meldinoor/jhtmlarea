@@ -350,12 +350,22 @@
         },
         attachEditorEvents: function() {
             var t = this;
-            $(this.editor.body).click(function() { t.updateTextArea(); }).keyup(function() { t.updateTextArea(); });
-            this.textarea.change(function() { t.updateHtmlArea(); }).keyup(function() { t.updateHtmlArea(); });
 
-            $('form').submit(function() { //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
+            var fnHA = function() {
+                t.updateHtmlArea();
+            };
+
+            this.textarea.change(fnHA).keyup(fnHA);
+
+
+
+            var fnTA = function() {
                 t.updateTextArea();
-            });
+            };
+
+            $(this.editor.body).click(fnTA).keyup(fnTA).blur(fnTA);
+
+            $('form').submit(fnTA); //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
         },
         isArray: function(v) {
             return v && typeof v === 'object' && typeof v.length === 'number' && typeof v.splice === 'function' && !(v.propertyIsEnumerable('length'));
