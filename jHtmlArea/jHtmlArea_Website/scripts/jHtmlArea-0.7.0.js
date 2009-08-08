@@ -100,6 +100,13 @@
             //return (s.rangeCount > 0) ? s.getRangeAt(0) : s.createRange();
             return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
         },
+        html: function(v) {
+            if (v) {
+                this.pastHTML(v);
+            } else {
+                return toHtmlString();
+            }
+        },
         pasteHTML: function(html) {
             this.iframe[0].contentWindow.focus();
             var r = this.getRange();
@@ -247,8 +254,12 @@
         toHtmlString: function() { return this.editor.body.innerHTML; },
         toString: function() { return this.editor.body.innerText; },
 
-        updateTextArea: function() { this.textarea.val(this.toHtmlString()); },
-        updateHtmlArea: function() { this.editor.body.innerHTML = this.textarea.val(); }
+        updateTextArea: function() {
+            this.textarea.val(this.toHtmlString());
+        },
+        updateHtmlArea: function() {
+            this.editor.body.innerHTML = this.textarea.val();
+        }
     };
     jHtmlArea.fn.init.prototype = jHtmlArea.fn;
 
@@ -260,7 +271,7 @@
         ["indent", "outdent"],
         ["justifyleft", "justifycenter", "justifyright"],
         ["link", "unlink", "image", "horizontalrule"],
-        ["p","h1", "h2", "h3", "h4", "h5", "h6"],
+        ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
         ["cut", "copy", "paste"]
     ],
         css: null,
@@ -340,7 +351,11 @@
         attachEditorEvents: function() {
             var t = this;
             $(this.editor.body).click(function() { t.updateTextArea(); }).keyup(function() { t.updateTextArea(); });
-            this.textarea.change(function() { t.updateHtmlArea(); });
+            this.textarea.change(function() { t.updateHtmlArea(); }).keyup(function() { t.updateHtmlArea(); });
+
+            $('form').submit(function() { //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
+                t.updateTextArea();
+            });
         },
         isArray: function(v) {
             return v && typeof v === 'object' && typeof v.length === 'number' && typeof v.splice === 'function' && !(v.propertyIsEnumerable('length'));

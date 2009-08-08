@@ -123,6 +123,14 @@
             /// </summary>
             /// <returns type="Object" />
         },
+        html: function(v) {
+        /// <summary>
+        ///     1: () Returns the HTML text value contained within the editor. 2: (v) Sets the editors value to the HTML text passed in.
+        /// </summary>
+        /// <param name="v" type="String">
+        ///     The HTML text to set the editors value to.
+        /// </param>
+        },
         pasteHTML: function(html) {
             /// <summary>
             ///     Pastes HTML text into the editor, replacing any currently selected text and HTML elements.
