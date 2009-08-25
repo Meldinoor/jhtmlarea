@@ -13,15 +13,23 @@
         $(function() {
             $("textarea").htmlarea(); // Initialize jHtmlArea's with all default values
 
-            window.setTimeout(function() { $("form").submit(); }, 3000);
+            //window.setTimeout(function() { $("form").submit(); }, 3000);
         });
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:ScriptManager runat="server" ID="sm1"></asp:ScriptManager>
+        
+        <asp:Literal runat="server" ID="litText"></asp:Literal><br />
+        
         <textarea runat="server" id="txtText" cols="50" rows="15"></textarea>
-        <input type="submit" value='manual submit' />    
+        <input type="submit" value='manual submit' />  
+        <br />
+        
+        <asp:Button runat="server" ID="btnSubmit" Text="asp:Button" />
+        <asp:LinkButton runat="server" ID="lbSubmit" Text="asp:LinkButton"></asp:LinkButton>
     </div>
     </form>
 </body>

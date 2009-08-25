@@ -251,8 +251,12 @@
             (this.textarea.is(":hidden")) ? this.showHTMLView() : this.hideHTMLView();
         },
 
-        toHtmlString: function() { return this.editor.body.innerHTML; },
-        toString: function() { return this.editor.body.innerText; },
+        toHtmlString: function() {
+            return this.editor.body.innerHTML;
+        },
+        toString: function() {
+            return this.editor.body.innerText;
+        },
 
         updateTextArea: function() {
             this.textarea.val(this.toHtmlString());
@@ -355,7 +359,11 @@
                 t.updateHtmlArea();
             };
 
-            this.textarea.change(fnHA).keyup(fnHA);
+            this.textarea.click(fnHA).
+                keyup(fnHA).
+                keydown(fnHA).
+                mousedown(fnHA).
+                blur(fnHA);
 
 
 
@@ -363,9 +371,30 @@
                 t.updateTextArea();
             };
 
-            $(this.editor.body).click(fnTA).keyup(fnTA).blur(fnTA);
+            $(this.editor.body).click(fnTA).
+                keyup(fnTA).
+                keydown(fnTA).
+                mousedown(fnTA).
+                blur(fnTA);
 
-            $('form').submit(fnTA); //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
+            $('form').submit(function() { t.toggleHTMLView(); t.toggleHTMLView(); });
+            //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
+
+
+            // Fix for ASP.NET Postback Model
+            if (window.__doPostBack) {
+                var old__doPostBack = __doPostBack;
+                window.__doPostBack = function() {
+                    if (t) {
+                        if (t.toggleHTMLView) {
+                            t.toggleHTMLView();
+                            t.toggleHTMLView();
+                        }
+                    }
+                    return old__doPostBack.apply(window, arguments);
+                };
+            }
+            
         },
         isArray: function(v) {
             return v && typeof v === 'object' && typeof v.length === 'number' && typeof v.splice === 'function' && !(v.propertyIsEnumerable('length'));
