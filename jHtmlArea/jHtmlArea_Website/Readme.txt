@@ -14,6 +14,9 @@ Or, check out http://jhtmlarea.codeplex.com
 CHANGE LOG
 -----------------------
 v0.7.0
+- Fixed Form Submit issue that caused the text to not be posted. Also fixed a
+related issue with ASP.NET Postbacks.
+
 - Added jHtmlArea.p method and "paragraph" functionality + toolbar button
 This allows the user to change the formatting from <H1>, <H2>, etc. to <P>
 
