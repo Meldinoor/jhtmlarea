@@ -14,6 +14,9 @@ Or, check out http://jhtmlarea.codeplex.com
 CHANGE LOG
 -----------------------
 v0.7.0
+- Fixed ColorPickerMenu to auto-hide after a short delay (1 second) once the
+user moves the mouse off the menu.
+
 - Fixed Form Submit issue that caused the text to not be posted. Also fixed a
 related issue with ASP.NET Postbacks.
 
