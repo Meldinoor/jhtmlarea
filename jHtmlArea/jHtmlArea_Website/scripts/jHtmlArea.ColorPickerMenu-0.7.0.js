@@ -78,8 +78,8 @@
 
 
             var autoHide = false;
-
-            picker.appendTo(document.body).show().
+            picker.appendTo(owner.parent()).
+                show().
                 mouseout(function() {
                     autoHide = true;
                     that.currentTimeout = window.setTimeout(function() { if (autoHide === true) { that.hide(); } }, 1000);
