@@ -76,7 +76,21 @@
                 }
             );
 
-            picker.appendTo(document.body).show();
+
+            var autoHide = false;
+
+            picker.appendTo(document.body).show().
+                mouseout(function() {
+                    autoHide = true;
+                    that.currentTimeout = window.setTimeout(function() { if (autoHide === true) { that.hide(); } }, 1000);
+                }).
+                mouseover(function() {
+                    if (that.currentTimeout) {
+                        window.clearTimeout(that.currentTimeout);
+                        that.currentTimeout = null;
+                    }
+                    autoHide = false;
+                });
         },
         hide: function() {
             this.picker.hide();
