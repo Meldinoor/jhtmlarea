@@ -7,7 +7,7 @@
     <title></title>
     <script type="text/javascript" src="scripts/jquery-1.3.2.js"></script>
 
-    <script type="text/javascript" src="scripts/jHtmlArea-0.7.0.js"></script>
+    <script type="text/javascript" src="scripts/jHtmlArea-0.7.5.js"></script>
     <link rel="Stylesheet" type="text/css" href="style/jHtmlArea.css" />
     <script type="text/javascript">
         $(function() {

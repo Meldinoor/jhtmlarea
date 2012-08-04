@@ -1,6 +1,6 @@
 ﻿/*
-* jHtmlArea 0.7.0 - WYSIWYG Html Editor jQuery Plugin
-* Copyright (c) 2009 Chris Pietschmann
+* jHtmlArea 0.7.5 - WYSIWYG Html Editor jQuery Plugin
+* Copyright (c) 2012 Chris Pietschmann
 * http://jhtmlarea.codeplex.com
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
@@ -29,7 +29,7 @@
     jHtmlArea.fn = jHtmlArea.prototype = {
 
         // The current version of jHtmlArea being used
-        jhtmlarea: "0.7.0",
+        jhtmlarea: "0.7.5",
 
         init: function(elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {

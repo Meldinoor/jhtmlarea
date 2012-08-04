@@ -25,6 +25,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jHtmlArea_Website", "jHtmlA
 		VWDPort = "3384"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B1F6F2A-3A4F-47BF-854F-63052A32A30B}"
+	ProjectSection(SolutionItems) = preProject
+		jsmin.bat = jsmin.bat
+		jsmin.exe = jsmin.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 2
