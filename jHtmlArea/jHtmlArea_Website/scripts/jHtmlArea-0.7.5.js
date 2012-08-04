@@ -5,8 +5,8 @@
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
 */
-(function($) {
-    $.fn.htmlarea = function(opts) {
+(function ($) {
+    $.fn.htmlarea = function (opts) {
         if (opts && typeof (opts) === "string") {
             var args = [];
             for (var i = 1; i < arguments.length; i++) { args.push(arguments[i]); }
@@ -14,9 +14,9 @@
             var f = htmlarea[opts];
             if (f) { return f.apply(htmlarea, args); }
         }
-        return this.each(function() { jHtmlArea(this, opts); });
+        return this.each(function () { jHtmlArea(this, opts); });
     };
-    var jHtmlArea = window.jHtmlArea = function(elem, options) {
+    var jHtmlArea = window.jHtmlArea = function (elem, options) {
         if (elem.jquery) {
             return jHtmlArea(elem[0]);
         }
@@ -31,7 +31,7 @@
         // The current version of jHtmlArea being used
         jhtmlarea: "0.7.5",
 
-        init: function(elem, options) {
+        init: function (elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {
                 var opts = $.extend({}, jHtmlArea.defaultOptions, options);
                 elem.jhtmlareaObject = this;
@@ -58,27 +58,27 @@
                 if (opts.loaded) { opts.loaded.call(this); }
             }
         },
-        dispose: function() {
+        dispose: function () {
             this.textarea.show().insertAfter(this.container);
             this.container.remove();
             this.textarea[0].jhtmlareaObject = null;
         },
-        execCommand: function(a, b, c) {
+        execCommand: function (a, b, c) {
             this.iframe[0].contentWindow.focus();
             this.editor.execCommand(a, b || false, c || null);
             this.updateTextArea();
         },
-        ec: function(a, b, c) {
+        ec: function (a, b, c) {
             this.execCommand(a, b, c);
         },
-        queryCommandValue: function(a) {
+        queryCommandValue: function (a) {
             this.iframe[0].contentWindow.focus();
             return this.editor.queryCommandValue(a);
         },
-        qc: function(a) {
+        qc: function (a) {
             return this.queryCommandValue(a);
         },
-        getSelectedHTML: function() {
+        getSelectedHTML: function () {
             if ($.browser.msie) {
                 return this.getRange().htmlText;
             } else {
@@ -86,7 +86,7 @@
                 return $("<p/>").append($(elem)).html();
             }
         },
-        getSelection: function() {
+        getSelection: function () {
             if ($.browser.msie) {
                 //return (this.editor.parentWindow.getSelection) ? this.editor.parentWindow.getSelection() : this.editor.selection;
                 return this.editor.selection;
@@ -94,20 +94,21 @@
                 return this.iframe[0].contentDocument.defaultView.getSelection();
             }
         },
-        getRange: function() {
+        getRange: function () {
             var s = this.getSelection();
             if (!s) { return null; }
             //return (s.rangeCount > 0) ? s.getRangeAt(0) : s.createRange();
             return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
         },
-        html: function(v) {
+        html: function (v) {
             if (v) {
-                this.pasteHTML(v);
+                this.textarea.val(v);
+                this.updateHtmlArea();
             } else {
                 return this.toHtmlString();
             }
         },
-        pasteHTML: function(html) {
+        pasteHTML: function (html) {
             this.iframe[0].contentWindow.focus();
             var r = this.getRange();
             if ($.browser.msie) {
@@ -122,90 +123,90 @@
             r.collapse(false);
             r.select();
         },
-        cut: function() {
+        cut: function () {
             this.ec("cut");
         },
-        copy: function() {
+        copy: function () {
             this.ec("copy");
         },
-        paste: function() {
+        paste: function () {
             this.ec("paste");
         },
-        bold: function() { this.ec("bold"); },
-        italic: function() { this.ec("italic"); },
-        underline: function() { this.ec("underline"); },
-        strikeThrough: function() { this.ec("strikethrough"); },
-        image: function(url) {
+        bold: function () { this.ec("bold"); },
+        italic: function () { this.ec("italic"); },
+        underline: function () { this.ec("underline"); },
+        strikeThrough: function () { this.ec("strikethrough"); },
+        image: function (url) {
             if ($.browser.msie && !url) {
                 this.ec("insertImage", true);
             } else {
                 this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
             }
         },
-        removeFormat: function() {
+        removeFormat: function () {
             this.ec("removeFormat", false, []);
             this.unlink();
         },
-        link: function() {
+        link: function () {
             if ($.browser.msie) {
                 this.ec("createLink", true);
             } else {
                 this.ec("createLink", false, prompt("Link URL:", "http://"));
             }
         },
-        unlink: function() { this.ec("unlink", false, []); },
-        orderedList: function() { this.ec("insertorderedlist"); },
-        unorderedList: function() { this.ec("insertunorderedlist"); },
-        superscript: function() { this.ec("superscript"); },
-        subscript: function() { this.ec("subscript"); },
+        unlink: function () { this.ec("unlink", false, []); },
+        orderedList: function () { this.ec("insertorderedlist"); },
+        unorderedList: function () { this.ec("insertunorderedlist"); },
+        superscript: function () { this.ec("superscript"); },
+        subscript: function () { this.ec("subscript"); },
 
-        p: function() {
+        p: function () {
             this.formatBlock("<p>");
         },
-        h1: function() {
+        h1: function () {
             this.heading(1);
         },
-        h2: function() {
+        h2: function () {
             this.heading(2);
         },
-        h3: function() {
+        h3: function () {
             this.heading(3);
         },
-        h4: function() {
+        h4: function () {
             this.heading(4);
         },
-        h5: function() {
+        h5: function () {
             this.heading(5);
         },
-        h6: function() {
+        h6: function () {
             this.heading(6);
         },
-        heading: function(h) {
+        heading: function (h) {
             this.formatBlock($.browser.msie ? "Heading " + h : "h" + h);
         },
 
-        indent: function() {
+        indent: function () {
             this.ec("indent");
         },
-        outdent: function() {
+        outdent: function () {
             this.ec("outdent");
         },
 
-        insertHorizontalRule: function() {
+        insertHorizontalRule: function () {
             this.ec("insertHorizontalRule", false, "ht");
         },
 
-        justifyLeft: function() {
+        justifyLeft: function () {
             this.ec("justifyLeft");
         },
-        justifyCenter: function() {
+        justifyCenter: function () {
             this.ec("justifyCenter");
         },
-        justifyRight: function() {
+        justifyRight: function () {
             this.ec("justifyRight");
         },
 
-        increaseFontSize: function() {
+        increaseFontSize: function () {
             if ($.browser.msie) {
                 this.ec("fontSize", false, this.qc("fontSize") + 1);
             } else if ($.browser.safari) {
@@ -214,7 +215,7 @@
                 this.ec("increaseFontSize", false, "big");
             }
         },
-        decreaseFontSize: function() {
+        decreaseFontSize: function () {
             if ($.browser.msie) {
                 this.ec("fontSize", false, this.qc("fontSize") - 1);
             } else if ($.browser.safari) {
@@ -224,15 +225,15 @@
             }
         },
 
-        forecolor: function(c) {
+        forecolor: function (c) {
             this.ec("foreColor", false, c || prompt("Enter HTML Color:", "#"));
         },
 
-        formatBlock: function(v) {
+        formatBlock: function (v) {
             this.ec("formatblock", false, v || null);
         },
 
-        showHTMLView: function() {
+        showHTMLView: function () {
             this.updateTextArea();
             this.textarea.show();
             this.htmlarea.hide();
@@ -240,28 +241,28 @@
             $("ul:not(:has(:visible))", this.toolbar).hide();
             $("ul li a.html", this.toolbar).addClass("highlighted");
         },
-        hideHTMLView: function() {
+        hideHTMLView: function () {
             this.updateHtmlArea();
             this.textarea.hide();
             this.htmlarea.show();
             $("ul", this.toolbar).show();
             $("ul li", this.toolbar).show().find("a.html").removeClass("highlighted");
         },
-        toggleHTMLView: function() {
+        toggleHTMLView: function () {
             (this.textarea.is(":hidden")) ? this.showHTMLView() : this.hideHTMLView();
         },
 
-        toHtmlString: function() {
+        toHtmlString: function () {
             return this.editor.body.innerHTML;
         },
-        toString: function() {
+        toString: function () {
             return this.editor.body.innerText;
         },
 
-        updateTextArea: function() {
+        updateTextArea: function () {
             this.textarea.val(this.toHtmlString());
         },
-        updateHtmlArea: function() {
+        updateHtmlArea: function () {
             this.editor.body.innerHTML = this.textarea.val();
         }
     };
@@ -298,11 +299,11 @@
             horizontalrule: "insertHorizontalRule",
             justifyleft: "justifyLeft", justifycenter: "justifyCenter", justifyright: "justifyRight",
             increasefontsize: "increaseFontSize", decreasefontsize: "decreaseFontSize",
-            html: function(btn) {
+            html: function (btn) {
                 this.toggleHTMLView();
             }
         },
-        initEditor: function(options) {
+        initEditor: function (options) {
             var edit = this.editor = this.iframe[0].contentWindow.document;
             edit.designMode = 'on';
             edit.open();
@@ -312,11 +313,11 @@
                 var e = edit.createElement('link'); e.rel = 'stylesheet'; e.type = 'text/css'; e.href = options.css; edit.getElementsByTagName('head')[0].appendChild(e);
             }
         },
-        initToolBar: function(options) {
+        initToolBar: function (options) {
             var that = this;
 
-            var menuItem = function(className, altText, action) {
-                return $("<li/>").append($("<a href='javascript:void(0);'/>").addClass(className).attr("title", altText).click(function() { action.call(that, $(this)); }));
+            var menuItem = function (className, altText, action) {
+                return $("<li/>").append($("<a href='javascript:void(0);'/>").addClass(className).attr("title", altText).click(function () { action.call(that, $(this)); }));
             };
 
             function addButtons(arr) {
@@ -327,13 +328,13 @@
                         if (e === "|") {
                             ul.append($('<li class="separator"/>'));
                         } else {
-                            var f = (function(e) {
+                            var f = (function (e) {
                                 // If button name exists in priv.toolbarButtons then call the "method" defined there, otherwise call the method with the same name
                                 var m = priv.toolbarButtons[e] || e;
                                 if ((typeof (m)).toLowerCase() === "function") {
-                                    return function(btn) { m.call(this, btn); };
+                                    return function (btn) { m.call(this, btn); };
                                 } else {
-                                    return function() { this[m](); this.editor.body.focus(); };
+                                    return function () { this[m](); this.editor.body.focus(); };
                                 }
                             })(e.toLowerCase());
                             var t = options.toolbarText[e.toLowerCase()];
@@ -352,10 +353,10 @@
                 addButtons(options.toolbar);
             }
         },
-        attachEditorEvents: function() {
+        attachEditorEvents: function () {
             var t = this;
 
-            var fnHA = function() {
+            var fnHA = function () {
                 t.updateHtmlArea();
             };
 
@@ -367,7 +368,7 @@
 
 
 
-            var fnTA = function() {
+            var fnTA = function () {
                 t.updateTextArea();
             };
 
@@ -377,14 +378,14 @@
                 mousedown(fnTA).
                 blur(fnTA);
 
-            $('form').submit(function() { t.toggleHTMLView(); t.toggleHTMLView(); });
+            $('form').submit(function () { t.toggleHTMLView(); t.toggleHTMLView(); });
             //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
 
 
             // Fix for ASP.NET Postback Model
             if (window.__doPostBack) {
                 var old__doPostBack = __doPostBack;
-                window.__doPostBack = function() {
+                window.__doPostBack = function () {
                     if (t) {
                         if (t.toggleHTMLView) {
                             t.toggleHTMLView();
@@ -394,9 +395,9 @@
                     return old__doPostBack.apply(window, arguments);
                 };
             }
-            
+
         },
-        isArray: function(v) {
+        isArray: function (v) {
             return v && typeof v === 'object' && typeof v.length === 'number' && typeof v.splice === 'function' && !(v.propertyIsEnumerable('length'));
         }
     };
