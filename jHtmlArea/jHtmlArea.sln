@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jHtmlArea_Website", "jHtmlArea_Website", "{7A6A4D47-FCDF-446D-BFBF-B4C0D8945798}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
 		SccAuxPath = "SAK"
 		SccLocalPath = "SAK"
 		SccProvider = "SAK"
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/jHtmlArea_Website"
 		Debug.AspNetCompiler.PhysicalPath = "jHtmlArea_Website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\jHtmlArea_Website\"
@@ -29,7 +29,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 2
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs04.codeplex.com/
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
 		SccWebProject1 = true
 		SccProjectUniqueName1 = jHtmlArea_Website
