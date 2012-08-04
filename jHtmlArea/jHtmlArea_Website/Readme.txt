@@ -1,5 +1,5 @@
 /* jHtmlArea - WYSIWYG Html Editor jQuery Plugin
- * Copyright (c) 2009 Chris Pietschmann
+ * Copyright (c) 2012 Chris Pietschmann
  * http://jhtmlarea.codeplex.com
  * Licensed under the Microsoft Reciprocal License (Ms-RL)
  * http://jhtmlarea.codeplex.com/license
@@ -13,6 +13,12 @@ Or, check out http://jhtmlarea.codeplex.com
 
 CHANGE LOG
 -----------------------
+v0.7.5
+- Fixed "html" method
+
+- Fixed jQuery UI Dialog Example
+
+
 v0.7.0
 - Fixed ColorPickerMenu positioning when placed within a "position: relative"
 div element.
