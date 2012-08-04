@@ -104,7 +104,7 @@
             if (v) {
                 this.pasteHTML(v);
             } else {
-                return toHtmlString();
+                return this.toHtmlString();
             }
         },
         pasteHTML: function(html) {
