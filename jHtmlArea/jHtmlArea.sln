@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jHtmlArea_Website", "jHtmlArea_Website", "{7A6A4D47-FCDF-446D-BFBF-B4C0D8945798}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
@@ -31,6 +31,42 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		jsmin.exe = jsmin.exe
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{2924946D-7731-4335-980E-E9942D283F6A}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\jHtmlArea.0.7.5.nupkg = Nuget\jHtmlArea.0.7.5.nupkg
+		Nuget\NuGet.exe = Nuget\NuGet.exe
+		Nuget\Package.bat = Nuget\Package.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package", "Package", "{61ACA418-CA07-4C09-A9C9-23E3E9B1766C}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Package\jHtmlArea.nuspec = Nuget\Package\jHtmlArea.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{366DC670-E7E7-4D11-8BB5-F95CE9E6FA3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DEDE77F0-3A22-497C-818C-2BAC653F3227}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5-vsdoc.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5-vsdoc.js
+		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.js
+		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min-vsdoc.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min-vsdoc.js
+		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min.js
+		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js
+		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{D76F81D1-FDCE-4BFE-BBEA-36364E5AA91B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jHtmlArea", "jHtmlArea", "{D07A72B1-867F-4563-9301-EE55DEEBA4C2}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.css = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.css
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.Editor.css = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.Editor.css
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.png = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea.png
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png
+		Nuget\Package\Content\Content\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png = Nuget\Package\Content\Content\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 2
@@ -52,5 +88,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61ACA418-CA07-4C09-A9C9-23E3E9B1766C} = {2924946D-7731-4335-980E-E9942D283F6A}
+		{366DC670-E7E7-4D11-8BB5-F95CE9E6FA3F} = {61ACA418-CA07-4C09-A9C9-23E3E9B1766C}
+		{DEDE77F0-3A22-497C-818C-2BAC653F3227} = {366DC670-E7E7-4D11-8BB5-F95CE9E6FA3F}
+		{D76F81D1-FDCE-4BFE-BBEA-36364E5AA91B} = {366DC670-E7E7-4D11-8BB5-F95CE9E6FA3F}
+		{D07A72B1-867F-4563-9301-EE55DEEBA4C2} = {D76F81D1-FDCE-4BFE-BBEA-36364E5AA91B}
 	EndGlobalSection
 EndGlobal
