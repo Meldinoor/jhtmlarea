@@ -1,5 +1,5 @@
 /* jHtmlArea - WYSIWYG Html Editor jQuery Plugin
- * Copyright (c) 2012 Chris Pietschmann
+ * Copyright (c) 2013 Chris Pietschmann
  * http://jhtmlarea.codeplex.com
  * Licensed under the Microsoft Reciprocal License (Ms-RL)
  * http://jhtmlarea.codeplex.com/license
@@ -13,6 +13,9 @@ Or, check out http://jhtmlarea.codeplex.com
 
 CHANGE LOG
 -----------------------
+v0.8
+- Fixed modern browser support (IE9 and 10, Firefox 22)
+
 v0.7.5
 - Fixed "html" method
 
