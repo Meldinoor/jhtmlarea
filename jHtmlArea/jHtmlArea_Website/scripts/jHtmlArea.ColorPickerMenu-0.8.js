@@ -1,7 +1,7 @@
 ﻿/*
-* jHtmlAreaColorPickerMenu 0.7.0 - A Color Picker Extension to jHtmlArea
+* jHtmlAreaColorPickerMenu 0.8.0 - A Color Picker Extension to jHtmlArea
 * Part of the jHtmlArea Project
-* Copyright (c) 2009 Chris Pietschmann
+* Copyright (c) 2013 Chris Pietschmann
 * http://jhtmlarea.codeplex.com
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
@@ -18,8 +18,8 @@
                 var that = this;
                 var rng = this.getRange();
                 jHtmlAreaColorPickerMenu($(".forecolor", this.toolbar), {
-                    colorChosen: function(color) {
-                        if ($.browser.msie) {
+                    colorChosen: function (color) {
+                        if ($jhtmlarea.browser.msie === true && $jhtmlarea.browser.version < 11) {
                             rng.execCommand("ForeColor", false, color);
                         } else {
                             that.forecolor(color);
@@ -33,7 +33,7 @@
         return new jHtmlAreaColorPickerMenu.fn.init(ownerElement, options);
     };
     menu.fn = menu.prototype = {
-        jhtmlareacolorpickermenu: "0.7.0",
+        jhtmlareacolorpickermenu: "0.8",
 
         init: function(ownerElement, options) {
             var opts = $.extend({}, menu.defaultOptions, options);

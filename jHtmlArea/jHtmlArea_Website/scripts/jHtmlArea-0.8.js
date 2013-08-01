@@ -1,11 +1,47 @@
 ﻿/*
-* jHtmlArea 0.7.5 - WYSIWYG Html Editor jQuery Plugin
-* Copyright (c) 2012 Chris Pietschmann
+* jHtmlArea 0.8 - WYSIWYG Html Editor jQuery Plugin
+* Copyright (c) 2013 Chris Pietschmann
 * http://jhtmlarea.codeplex.com
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
 */
-(function ($) {
+(function ($, window) {
+
+    var $jhtmlarea = window.$jhtmlarea = {};
+    var $browser = $jhtmlarea.browser = {};
+    (function () {
+        $browser.msie = false;
+        $browser.mozilla = false;
+        $browser.safari = false;
+        $browser.version = 0;
+        
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+            $browser.msie = true;
+            $browser.version = parseFloat(RegExp.$1);
+        } else if (navigator.userAgent.match(/Trident\/([0-9]+)\./)) {
+            $browser.msie = true;
+            $browser.version = RegExp.$1;
+            if (navigator.userAgent.match(/rv:([0-9]+)\./)) {
+                $browser.version = parseFloat(RegExp.$1);
+            }
+        }
+        if (navigator.userAgent.match(/Mozilla\/([0-9]+)\./)) {
+            $browser.mozilla = true;
+            if ($browser.version === 0) {
+                $browser.version = parseFloat(RegExp.$1);
+            }
+        }
+        if (navigator.userAgent.match(/Safari ([0-9]+)\./)) {
+            $browser.safari = true;
+            $browser.version = RegExp.$1;
+            if (navigator.userAgent.match(/Version\/([0-9]+)\./)) {
+                if ($browser.version === 0) {
+                    $browser.version = parseFloat(RegExp.$1);
+                }
+            }
+        }
+    })();
+
     $.fn.htmlarea = function (opts) {
         if (opts && typeof (opts) === "string") {
             var args = [];
@@ -29,7 +65,7 @@
     jHtmlArea.fn = jHtmlArea.prototype = {
 
         // The current version of jHtmlArea being used
-        jhtmlarea: "0.7.5",
+        jhtmlarea: "0.8",
 
         init: function (elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {
@@ -43,7 +79,7 @@
                 priv.initToolBar.call(this, opts);
 
                 var iframe = this.iframe = $("<iframe/>").height(textarea.height());
-                iframe.width(textarea.width() - ($.browser.msie ? 0 : 4));
+                iframe.width(textarea.width() - ($browser.msie === true && $browser.version < 10 ? 0 : 4));
                 var htmlarea = this.htmlarea = $("<div/>").append(iframe);
 
                 container.append(htmlarea).append(textarea.hide());
@@ -79,7 +115,7 @@
             return this.queryCommandValue(a);
         },
         getSelectedHTML: function () {
-            if ($.browser.msie) {
+            if ($browser.msie) {
                 return this.getRange().htmlText;
             } else {
                 var elem = this.getRange().cloneContents();
@@ -87,7 +123,7 @@
             }
         },
         getSelection: function () {
-            if ($.browser.msie) {
+            if ($browser.msie === true && $browser.version < 11) {
                 //return (this.editor.parentWindow.getSelection) ? this.editor.parentWindow.getSelection() : this.editor.selection;
                 return this.editor.selection;
             } else {
@@ -111,9 +147,9 @@
         pasteHTML: function (html) {
             this.iframe[0].contentWindow.focus();
             var r = this.getRange();
-            if ($.browser.msie) {
+            if ($browser.msie) {
                 r.pasteHTML(html);
-            } else if ($.browser.mozilla) {
+            } else if ($browser.mozilla) {
                 r.deleteContents();
                 r.insertNode($((html.indexOf("<") != 0) ? $("<span/>").append(html) : html)[0]);
             } else { // Safari
@@ -137,7 +173,7 @@
         underline: function () { this.ec("underline"); },
         strikeThrough: function () { this.ec("strikethrough"); },
         image: function (url) {
-            if ($.browser.msie && !url) {
+            if ($browser.msie === true && !url) {
                 this.ec("insertImage", true);
             } else {
                 this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
@@ -148,7 +184,7 @@
             this.unlink();
         },
         link: function () {
-            if ($.browser.msie) {
+            if ($browser.msie === true) {
                 this.ec("createLink", true);
             } else {
                 this.ec("createLink", false, prompt("Link URL:", "http://"));
@@ -182,7 +218,7 @@
             this.heading(6);
         },
         heading: function (h) {
-            this.formatBlock($.browser.msie ? "Heading " + h : "h" + h);
+            this.formatBlock($browser.msie === true ? "Heading " + h : "h" + h);
         },
 
         indent: function () {
@@ -207,18 +243,18 @@
         },
 
         increaseFontSize: function () {
-            if ($.browser.msie) {
+            if ($browser.msie === true) {
                 this.ec("fontSize", false, this.qc("fontSize") + 1);
-            } else if ($.browser.safari) {
+            } else if ($browser.safari) {
                 this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "larger")[0]);
             } else {
                 this.ec("increaseFontSize", false, "big");
             }
         },
         decreaseFontSize: function () {
-            if ($.browser.msie) {
+            if ($browser.msie === true) {
                 this.ec("fontSize", false, this.qc("fontSize") - 1);
-            } else if ($.browser.safari) {
+            } else if ($browser.safari) {
                 this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "smaller")[0]);
             } else {
                 this.ec("decreaseFontSize", false, "small");
@@ -226,7 +262,7 @@
         },
 
         forecolor: function (c) {
-            this.ec("foreColor", false, c || prompt("Enter HTML Color:", "#"));
+            this.ec("foreColor", false, c !== undefined ? c : prompt("Enter HTML Color:", "#"));
         },
 
         formatBlock: function (v) {
@@ -401,4 +437,4 @@
             return v && typeof v === 'object' && typeof v.length === 'number' && typeof v.splice === 'function' && !(v.propertyIsEnumerable('length'));
         }
     };
-})(jQuery);
+})(jQuery, window);
