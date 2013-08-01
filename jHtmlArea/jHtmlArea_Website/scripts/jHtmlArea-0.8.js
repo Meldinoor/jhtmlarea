@@ -79,7 +79,8 @@
                 priv.initToolBar.call(this, opts);
 
                 var iframe = this.iframe = $("<iframe/>").height(textarea.height());
-                iframe.width(textarea.width() - ($browser.msie === true && $browser.version < 10 ? 0 : 4));
+                iframe.width(textarea.width());
+
                 var htmlarea = this.htmlarea = $("<div/>").append(iframe);
 
                 container.append(htmlarea).append(textarea.hide());
@@ -89,7 +90,8 @@
 
                 // Fix total height to match TextArea
                 iframe.height(iframe.height() - toolbar.height());
-                toolbar.width(textarea.width() - 2);
+                toolbar.width(textarea.width());
+                
 
                 if (opts.loaded) { opts.loaded.call(this); }
             }
