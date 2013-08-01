@@ -139,7 +139,7 @@
             return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
         },
         html: function (v) {
-            if (v) {
+            if (v !== undefined) {
                 this.textarea.val(v);
                 this.updateHtmlArea();
             } else {
