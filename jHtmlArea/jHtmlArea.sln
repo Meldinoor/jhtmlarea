@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jHtmlArea_Website", "jHtmlArea_Website", "{7A6A4D47-FCDF-446D-BFBF-B4C0D8945798}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
@@ -23,6 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jHtmlArea_Website", "jHtmlA
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "3384"
+		SlnRelativePath = "jHtmlArea_Website\"
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B1F6F2A-3A4F-47BF-854F-63052A32A30B}"
@@ -33,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{2924946D-7731-4335-980E-E9942D283F6A}"
 	ProjectSection(SolutionItems) = preProject
+		Nuget\jHtmlArea.0.8.0.nupkg = Nuget\jHtmlArea.0.8.0.nupkg
 		Nuget\NuGet.exe = Nuget\NuGet.exe
 		Nuget\Package.bat = Nuget\Package.bat
 	EndProjectSection
@@ -46,12 +50,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{366D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DEDE77F0-3A22-497C-818C-2BAC653F3227}"
 	ProjectSection(SolutionItems) = preProject
-		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5-vsdoc.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5-vsdoc.js
-		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.js
-		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min-vsdoc.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min-vsdoc.js
-		Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min.js = Nuget\Package\Content\Scripts\jHtmlArea-0.7.5.min.js
-		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js
-		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js
+		Nuget\Package\Content\Scripts\jHtmlArea-0.8.js = Nuget\Package\Content\Scripts\jHtmlArea-0.8.js
+		Nuget\Package\Content\Scripts\jHtmlArea-0.8.min.js = Nuget\Package\Content\Scripts\jHtmlArea-0.8.min.js
+		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.8.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.8.js
+		Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.8.min.js = Nuget\Package\Content\Scripts\jHtmlArea.ColorPickerMenu-0.8.min.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{D76F81D1-FDCE-4BFE-BBEA-36364E5AA91B}"
