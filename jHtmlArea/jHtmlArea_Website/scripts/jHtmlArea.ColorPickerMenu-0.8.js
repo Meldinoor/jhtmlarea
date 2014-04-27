@@ -19,6 +19,7 @@
                 var rng = this.getRange();
                 jHtmlAreaColorPickerMenu($(".forecolor", this.toolbar), {
                     colorChosen: function (color) {
+                        that.previousRange = rng;
                         if ($jhtmlarea.browser.msie === true && $jhtmlarea.browser.version < 11) {
                             rng.execCommand("ForeColor", false, color);
                         } else {

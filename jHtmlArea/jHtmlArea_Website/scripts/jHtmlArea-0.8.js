@@ -103,6 +103,16 @@
         },
         execCommand: function (a, b, c) {
             this.iframe[0].contentWindow.focus();
+            
+            if ($browser.msie === true && $browser.version >= 11) {
+                if (this.previousRange) {
+                    var rng = this.previousRange;
+                    var sel = this.getSelection()
+                    sel.removeAllRanges();
+                    sel.addRange(rng);
+                }
+            }
+            
             this.editor.execCommand(a, b || false, c || null);
             this.updateTextArea();
         },
@@ -135,8 +145,16 @@
         getRange: function () {
             var s = this.getSelection();
             if (!s) { return null; }
-            //return (s.rangeCount > 0) ? s.getRangeAt(0) : s.createRange();
-            return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
+            if (s.getRangeAt) {
+                if (s.rangeCount > 0) {
+                    return s.getRangeAt(0);
+                }
+            }
+            if (s.createRange) {
+                return s.createRange();
+            }
+            return null;
+            //return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
         },
         html: function (v) {
             if (v !== undefined) {
@@ -404,7 +422,9 @@
                 mousedown(fnHA).
                 blur(fnHA);
 
-
+            this.iframe.blur(function () {
+                t.previousRange = t.getRange();
+            });
 
             var fnTA = function () {
                 t.updateTextArea();
