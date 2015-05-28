@@ -4,6 +4,6 @@
 
 ```
 dependencies: {
-	"jhtmlarea" : "git@github.com:krampstudio/jhtmlarea.git"
+	"jhtmlarea" : "git@github.com:mnaoumov/jhtmlarea.git"
 }
 ```

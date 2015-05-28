@@ -1,0 +1,30 @@
+{
+  "name": "jhtmlarea",
+  "version": "1.8.0",
+  "homepage": "https://jhtmlarea.codeplex.com/",
+  "authors": [
+    "Chris Pietschmann"
+  ],
+  "description": "A simple, light weight, extensible WYSIWYG HTML Editor built on top of jQuery. This component allows you to easily display a WYSIWYG HTML Editor in place of any TextArea DOM Elements on the page.",
+  "main": "Scripts/jHtmlArea-0.8.js",
+  "keywords": [
+    "wysiwyg",
+    "html",
+    "htmlarea",
+    "textarea",
+    "jquery",
+    "editor",
+    "javascript"
+  ],
+  "license": "Ms-PL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.3.2"
+  }, 
+}
