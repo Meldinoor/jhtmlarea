@@ -1,9 +1,5 @@
- This repository pupose is only to redistribute jHtmlArea over Github and to package it for [Bower](http://twitter.github.com/bower/).
- 
- To add it as a dependency of your project, just point to the repo : 
+This repository is a fork for jHtmlArea project from https://jhtmlarea.codeplex.com/
 
-```
-dependencies: {
-	"jhtmlarea" : "git@github.com:mnaoumov/jhtmlarea.git"
-}
-```
+NuGet package https://www.nuget.org/packages/jHtmlArea/
+
+Bower component https://libraries.io/bower/jhtmlarea
