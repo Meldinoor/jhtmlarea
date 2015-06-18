@@ -91,7 +91,7 @@
                 // Fix total height to match TextArea
                 iframe.height(iframe.height() - toolbar.height());
                 toolbar.width(textarea.width());
-                
+                iframe.contents().find("html").height("100%");
 
                 if (opts.loaded) { opts.loaded.call(this); }
             }
