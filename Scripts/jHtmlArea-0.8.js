@@ -372,6 +372,7 @@
             if (options.css) {
                 var e = edit.createElement('link'); e.rel = 'stylesheet'; e.type = 'text/css'; e.href = options.css; edit.getElementsByTagName('head')[0].appendChild(e);
             }
+            this.iframe[0].contentWindow.focus();
         },
         initToolBar: function (options) {
             var that = this;
