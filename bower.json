@@ -24,7 +24,8 @@
     "test",
     "tests",
     "BuildProcessTemplates",
-    "jHtmlArea"
+    "jHtmlArea",
+    "!Content/jHtmlArea"
   ],
   "dependencies": {
     "jquery": ">=1.3.2"
