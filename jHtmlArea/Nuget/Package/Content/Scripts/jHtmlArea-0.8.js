@@ -87,7 +87,7 @@
 
                 var self = this;
 
-                setTimeout(function() {
+                setTimeout(function delayedInit() {
                     priv.initEditor.call(self, opts);
                     priv.attachEditorEvents.call(self);
 
