@@ -85,15 +85,19 @@
 
                 container.append(htmlarea).append(textarea.hide());
 
-                priv.initEditor.call(this, opts);
-                priv.attachEditorEvents.call(this);
+                var self = this;
 
-                // Fix total height to match TextArea
-                iframe.height(iframe.height() - toolbar.height());
-                toolbar.width(textarea.width());
-                iframe.contents().find("html").height("100%");
+                setTimeout(function() {
+                    priv.initEditor.call(self, opts);
+                    priv.attachEditorEvents.call(self);
 
-                if (opts.loaded) { opts.loaded.call(this); }
+                    // Fix total height to match TextArea
+                    iframe.height(iframe.height() - toolbar.height());
+                    toolbar.width(textarea.width());
+                    iframe.contents().find("html").height("100%");
+
+                    if (opts.loaded) { opts.loaded.call(self); }
+                }, 0);
             }
         },
         dispose: function () {
