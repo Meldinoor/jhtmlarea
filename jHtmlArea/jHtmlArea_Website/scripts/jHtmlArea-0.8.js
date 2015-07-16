@@ -319,7 +319,7 @@
             return this.editor.body.innerHTML;
         },
         toString: function () {
-            return this.editor.body.innerText;
+            return this.editor && this.editor.body.innerText;
         },
 
         updateTextArea: function () {
