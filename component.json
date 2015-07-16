@@ -2,7 +2,7 @@
 	"name" : "jhtmlarea",
 	"repo": "mnaoumov/jhtmlarea",
 	"description": "A simple, light weight, extensible WYSIWYG HTML Editor built on top of jQuery. This component allows you to easily display a WYSIWYG HTML Editor in place of any TextArea DOM Elements on the page.",
-	"version" : "0.8.0",
+	"version" : "0.8.2",
 	"keywords" : [
 		"wysiwyg",
 		"html",
