@@ -203,7 +203,11 @@
             if ($browser.msie === true && !url) {
                 this.ec("insertImage", true);
             } else {
-                this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
+                if (!url)
+                    url = prompt("Image URL:", "http://");
+                var regex = /\.(jpeg|jpg|gif|png|bmp)/i;
+                if (regex.test(url))
+                    this.ec("insertImage", false, url);
             }
         },
         removeFormat: function () {
