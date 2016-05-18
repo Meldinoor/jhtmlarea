@@ -24,14 +24,12 @@
             if (navigator.userAgent.match(/rv:([0-9]+)\./)) {
                 $browser.version = parseFloat(RegExp.$1);
             }
-        }
-        if (navigator.userAgent.match(/Mozilla\/([0-9]+)\./)) {
+        } else if (navigator.userAgent.match(/Mozilla\/([0-9]+)\./)) {
             $browser.mozilla = true;
             if ($browser.version === 0) {
                 $browser.version = parseFloat(RegExp.$1);
             }
-        }
-        if (navigator.userAgent.match(/Safari ([0-9]+)\./)) {
+        } else if (navigator.userAgent.match(/Safari ([0-9]+)\./)) {
             $browser.safari = true;
             $browser.version = RegExp.$1;
             if (navigator.userAgent.match(/Version\/([0-9]+)\./)) {
