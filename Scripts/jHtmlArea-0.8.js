@@ -24,14 +24,12 @@
             if (navigator.userAgent.match(/rv:([0-9]+)\./)) {
                 $browser.version = parseFloat(RegExp.$1);
             }
-        }
-        if (navigator.userAgent.match(/Mozilla\/([0-9]+)\./)) {
+        } else if (navigator.userAgent.match(/Mozilla\/([0-9]+)\./)) {
             $browser.mozilla = true;
             if ($browser.version === 0) {
                 $browser.version = parseFloat(RegExp.$1);
             }
-        }
-        if (navigator.userAgent.match(/Safari ([0-9]+)\./)) {
+        } else if (navigator.userAgent.match(/Safari ([0-9]+)\./)) {
             $browser.safari = true;
             $browser.version = RegExp.$1;
             if (navigator.userAgent.match(/Version\/([0-9]+)\./)) {
@@ -174,17 +172,21 @@
         pasteHTML: function (html) {
             this.iframe[0].contentWindow.focus();
             var r = this.getRange();
-            if ($browser.msie) {
+            if ($browser.msie && $browser.version < 11) {
                 r.pasteHTML(html);
-            } else if ($browser.mozilla) {
+                r.collapse(false);
+                r.select();
+            } else {
                 r.deleteContents();
-                r.insertNode($((html.indexOf("<") != 0) ? $("<span/>").append(html) : html)[0]);
-            } else { // Safari
-                r.deleteContents();
-                r.insertNode($(this.iframe[0].contentWindow.document.createElement("span")).append($((html.indexOf("<") != 0) ? "<span>" + html + "</span>" : html))[0]);
+                var frag = r.createContextualFragment(html);
+                r.insertNode(frag);
+                r.collapse(false);
+
+                var range = document.createRange();
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
             }
-            r.collapse(false);
-            r.select();
         },
         cut: function () {
             this.ec("cut");
